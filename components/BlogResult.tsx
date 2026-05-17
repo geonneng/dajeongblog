@@ -91,7 +91,7 @@ export default function BlogResult({ content, topic, savedToSheets, onReset }: B
       <div className="flex gap-3">
         <Button
           onClick={handleCopy}
-          className={`flex-1 h-12 text-sm font-bold rounded-xl transition-all duration-200 shadow-sm ${
+          className={`flex-1 h-12 text-sm font-bold rounded-xl transition-all duration-200 shadow-sm touch-manipulation ${
             copied
               ? "bg-emerald-500 hover:bg-emerald-600 text-white"
               : "bg-rose-400 hover:bg-rose-500 text-white"
@@ -112,7 +112,7 @@ export default function BlogResult({ content, topic, savedToSheets, onReset }: B
         <Button
           onClick={onReset}
           variant="outline"
-          className="h-12 px-5 rounded-xl border-gray-200 text-gray-500 hover:bg-gray-50 font-bold"
+          className="h-12 px-5 rounded-xl border-gray-200 text-gray-500 hover:bg-gray-50 font-bold touch-manipulation"
         >
           <RefreshCw className="mr-1.5 h-4 w-4" />
           다시 쓰기

@@ -1,7 +1,7 @@
 {
   "name": "다정이 블로그 생성기",
   "short_name": "다정이 블로그",
-  "description": "다정이 감성으로 네이버 블로그 글을 AI가 자동 생성해드려요",
+  "description": "네이버 검색·사진 인식·인터뷰로 다정이 감성 블로그 글을 생성해요",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
