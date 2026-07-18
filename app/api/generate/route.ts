@@ -37,9 +37,11 @@ export async function POST(req: NextRequest) {
       const { blogCategory, food, daily, product, images = [] } = body;
 
       const category = blogCategory as BlogCategory;
-      const validImages: Array<{ base64: string; mimeType: string }> = (
+      const validImages = (
         images as Array<{ base64?: string; mimeType?: string }>
-      ).filter((img) => img?.base64?.trim());
+      ).filter((img): img is { base64: string; mimeType: string } =>
+        typeof img?.base64 === "string" && img.base64.trim().length > 0
+      );
       const hasImage = validImages.length > 0;
 
       const imageNote = hasImage
