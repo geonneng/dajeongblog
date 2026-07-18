@@ -17,11 +17,7 @@ const initialStep1: Step1Data = {
   address: "",
   category: "",
   basicInfo: "",
-  image: {
-    previewUrl: null,
-    imageBase64: null,
-    imageMimeType: null,
-  },
+  image: [],
 };
 
 export default function BlogWizard({ onComplete, isGenerating, error }: BlogWizardProps) {
@@ -44,13 +40,14 @@ export default function BlogWizard({ onComplete, isGenerating, error }: BlogWiza
 
     try {
       let analysis = "";
-      if (step1.image.imageBase64) {
+      const firstImage = step1.image[0];
+      if (firstImage?.imageBase64) {
         const res = await fetch("/api/analyze-image", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            imageBase64: step1.image.imageBase64,
-            mimeType: step1.image.imageMimeType || "image/jpeg",
+            imageBase64: firstImage.imageBase64,
+            mimeType: firstImage.imageMimeType || "image/jpeg",
           }),
         });
         const json = await res.json();
@@ -91,8 +88,8 @@ export default function BlogWizard({ onComplete, isGenerating, error }: BlogWiza
       category: step1.category,
       basicInfo: step1.basicInfo,
       imageAnalysis,
-      imageBase64: step1.image.imageBase64,
-      imageMimeType: step1.image.imageMimeType,
+      imageBase64: step1.image[0]?.imageBase64 ?? null,
+      imageMimeType: step1.image[0]?.imageMimeType ?? null,
       interviewQuestions: questions,
       interviewAnswers: answers,
     });
