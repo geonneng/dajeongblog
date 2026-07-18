@@ -6,16 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import ImageUpload, { type ImageUploadValue } from "@/components/ImageUpload";
+import ImageUpload from "@/components/ImageUpload";
 import { Loader2, MapPin, Search } from "lucide-react";
-import type { NaverLocalItem } from "@/lib/types";
+import type { ImageItem, NaverLocalItem } from "@/lib/types";
 
 export interface Step1Data {
   placeName: string;
   address: string;
   category: string;
   basicInfo: string;
-  image: ImageUploadValue;
+  image: ImageItem[];
 }
 
 interface Step1PlaceImageProps {
